@@ -84,7 +84,7 @@ const styles = {
     containerStyle:{
         paddingTop: 5,
         backgroundColor: '#292929',
-        marginVertical: 8,
+        marginVertical: 4,
         marginHorizontal: 16,
         borderRadius: 6,
         elevation: 2,

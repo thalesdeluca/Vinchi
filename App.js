@@ -43,7 +43,7 @@ export default class App extends Component{
                 <View style = {{paddingRight: 20, paddingLeft: 10}}>
                   <BurgerButton size= {25} color= "#fff"/>
                 </View>
-                <SearchBar hint= "Search" fontSize= {12} />
+                <SearchBar hint= "Search" fontSize= {14}/>
               </View>
               <Text style= {{alignSelf:'center', justifyContent: 'center', color: '#fff', fontSize: 13, fontFamily:'GeosansLight', paddingBottom:5}}>Showing results around</Text>
               <Text style= {{alignSelf:'center', justifyContent: 'center', color: '#fff', fontSize: 16, fontFamily:'GeosansLight',paddingBottom:5}}>Rua Alberto Carazzai, Centro - Cornélio Procópio - PR</Text>
@@ -64,7 +64,7 @@ export default class App extends Component{
               </ScrollView>
           </View>
           
-          <View style= {{height: '20%', backgroundColor: 'rgba(0,0,0,0)'}}>
+          <View style= {{height: '10%', backgroundColor: 'rgba(0,0,0,0)'}}>
             
             <TabBar />
           </View>
@@ -83,7 +83,6 @@ const styles= {
     backgroundColor: '#212121', 
   },
   contentStyle:{
-    paddingTop:StatusBar.currentHeight,
     height: '90%'
   },
   headerStyle:{
