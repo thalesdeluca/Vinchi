@@ -114,9 +114,7 @@ class TabBar extends Component{
         );
     }
 }
-const mapStateToProps = state => {
-    return { tab: state.tab };
-};
+
 
 
 const styles = {
@@ -143,5 +141,10 @@ const styles = {
     },
     
 }
+const mapStateToProps = state => {
+    return { 
+        tab: state.tab
+    };
+};
 
 export default connect(mapStateToProps, actions)(TabBar);

@@ -1,7 +1,8 @@
+import { SELECT_TAB } from '../actions/types';
+
 export default (state, action) =>{
-    console.log(action);
     switch(action.type){
-        case "select_tab":
+        case SELECT_TAB:
             return action.payload;
         default:
             return null;
