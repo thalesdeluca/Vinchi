@@ -1,9 +1,12 @@
 import React,{ Component }from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import MainScreen from './src/screens/MainScreen';
+import LoginScreen from './src/screens/LoginScreen';
 
-const App = StackNavigator({
+const App = createStackNavigator({
+  Login: LoginScreen,
   Main: MainScreen,
+  
 },
 {
   headerMode: 'none',

@@ -5,9 +5,6 @@ import ReactionBar from './ReactionBar';
 import { Rule, TouchableNative } from './common';
 
 export default class Card extends Component{
-    static delays= {
-        highlight: 130//ms
-    }
     constructor(props){
         super(props);
     }

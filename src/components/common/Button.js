@@ -7,7 +7,7 @@ const Button = (props) =>{
     return (
         <TouchableOpacity onPress = {onPress}>
             <View style= {[{backgroundColor : color, height: height}, styles.containerStyle]}>
-                {props.children}
+                <Text>{props.children}</Text>
             </View>
         </TouchableOpacity>
     );
