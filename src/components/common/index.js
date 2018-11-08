@@ -7,3 +7,4 @@ export * from './Rule';
 export * from './Line';
 export * from './TouchableNative';
 export * from './SearchBar';
+export * from './Spinner';

@@ -78,7 +78,7 @@ class TabBar extends Component{
                         <TouchableNative onPress= {() => this.changeSelectedTo(0)} background={TouchableNativeFeedback.Ripple('#545454', false)} style={{borderRadius:20,}}>
                             <View style = { buttonStyle }>
                                 <FontAwesome name ='newspaper-o' size= {25} color = {this.selectionHighlight(0)}/>
-                                <Text style = { [labelStyle,{color: this.selectionHighlight(0)} ]}>Recents</Text>
+                                <Text style = { [labelStyle,{color: this.selectionHighlight(0)} ]}>Nearby</Text>
                             </View>
                         </TouchableNative>
 

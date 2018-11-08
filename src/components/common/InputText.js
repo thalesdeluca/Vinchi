@@ -1,19 +1,24 @@
 import React from 'react';
 import { View, TextInput} from 'react-native';
 
-const InputText = ({hint, value, onChangeText, secureTextEntry, fontSize = 18, height = (fontSize*2)+10, style}) => {
-    const { containerStyle, inputStyle } = styles;
+const InputText = (props) => {
 
+    const { containerStyle, inputStyle, iconStyle } = styles;
+    const { hint, value, onChangeText, secureTextEntry, fontSize = 18, height = (fontSize*2)+10, style, placeHolderColor= 'rgba(165,165,165,0.6)', icon, textColor = '#fff' } = props;
     return (
         <View style = {[containerStyle, {height: height}, style]}>
+            <View style = {iconStyle}>
+                {icon}
+            </View>
             <TextInput 
                 secureTextEntry = {secureTextEntry}
                 value = { value }
                 onChangeText = { onChangeText }
-                style = {[inputStyle, {fontSize : fontSize}]} 
+                style = {[inputStyle, {fontSize : fontSize, color: textColor}]} 
                 placeholder= { hint }
                 underlineColorAndroid= 'transparent'
-                autoCorrect = { false }/>
+                autoCorrect = { false }
+                placeholderTextColor= {placeHolderColor}/>
         </View>
     );
 };
@@ -24,21 +29,17 @@ const styles = {
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop:3,
         paddingHorizontal: 10,
         borderWidth: 0.2,
-        borderRadius: 20,
-        elevation: 2,
-        shadowColor: '#222',
-        shadowOffset: {width:1, height: 2},
-        shadowOpacity: 0.1,
-        shadowRadius: 20,
+        borderRadius: 18,
     },
     inputStyle:{
-        color:'#000',
         paddingHorizontal: 5,
         flex: 2,
     }, 
+    iconStyle:{
+        paddingHorizontal: 5,
+    }
 }
 
 export { InputText };

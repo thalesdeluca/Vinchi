@@ -3,23 +3,25 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 
 const Button = (props) =>{
-    const { color , onPress, height} = props;
+    const { color , onPress, style, fontSize} = props;
     return (
         <TouchableOpacity onPress = {onPress}>
-            <View style= {[{backgroundColor : color, height: height}, styles.containerStyle]}>
-                <Text>{props.children}</Text>
+            <View style= {[{backgroundColor : color}, styles.containerStyle, style]}>
+                <Text style = {{fontSize: fontSize, fontWeight: '900',}}>{props.children}</Text>
             </View>
         </TouchableOpacity>
     );
 }
 const styles= {
     containerStyle:{
-        padding: 10,
-        marginHorizontal: 5,
         flexDirection: 'row',
-        justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10,
+        justifyContent: 'center',
+        width:'100%',
+        paddingHorizontal: 10,
+        paddingVertical: 14,
+        borderWidth: 0.2,
+        borderRadius: 18,
         elevation: 2,
         shadowColor: '#222',
         shadowOffset: {width: 1, height: 2},

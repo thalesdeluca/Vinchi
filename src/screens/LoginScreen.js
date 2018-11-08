@@ -13,7 +13,7 @@ class LoginScreen extends Component{
   render(){
     return(
       <Provider store = { createStore(reducers) }>
-        <LoginForm/>
+        <LoginForm navigation = { this.props.navigation }/>
       </Provider>
       
     );
