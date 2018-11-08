@@ -45,12 +45,11 @@ class LoginForm extends Component{
 
     render(){
         const {containerStyle, inputStyle, headerStyle, forgotStyle, buttonStyle, footerStyle } = styles;
-        console.log(this.state);
+
         return(
             <View style = {containerStyle}>
                 <Text style = {headerStyle}>Vinchi</Text>
                 <InputText
-                
                     hint= "email@gmail.com"
                     onChangeText ={this.onEmailChange.bind(this)}
                     value = {this.props.email}
@@ -59,6 +58,7 @@ class LoginForm extends Component{
                     icon = {
                         <Feather name="user" color ='rgba(200,200,200,0.7)' size={16}/>
                     }/>
+
                 <InputText
                     hint= "password"
                     secureTextEntry = {true}
@@ -71,6 +71,7 @@ class LoginForm extends Component{
                     }/>
                 
                 { this.loginButton()}
+
                 <Text style={forgotStyle}>Forgot Password</Text>
 
                 <Text style = {{color: 'rgba(133,133,133,0.7)', marginTop: 20, padding: 10}}>If you don't have and account yet just:</Text>
@@ -106,8 +107,7 @@ const styles = {
     },
     inputStyle:{
       marginBottom: 10,
-      backgroundColor: '#212121',
-      borderColor: '#fff',
+      backgroundColor: '#1b1b1b',
     },
     forgotStyle: {
         color: '#d1d1d1',
