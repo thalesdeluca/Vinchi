@@ -16,12 +16,7 @@ class SignUpScreen extends Component{
 
   componentDidMount(){
     const config = {
-      apiKey: "AIzaSyCHFru-deR1zJHTHH7QQ679Qi9YZOB2EVA",
-      authDomain: "vinchi-cca5b.firebaseapp.com",
-      databaseURL: "https://vinchi-cca5b.firebaseio.com",
-      projectId: "vinchi-cca5b",
-      storageBucket: "vinchi-cca5b.appspot.com",
-      messagingSenderId: "532605489849"
+      //Here goes the firebase information
     };
     firebase.initializeApp(config);
   }
