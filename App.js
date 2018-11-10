@@ -1,4 +1,5 @@
 import React,{ Component }from 'react';
+import { StatusBar, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
@@ -12,11 +13,15 @@ const App = createStackNavigator({
 {
   headerMode: 'none',
   navigationOptions: {
-    headerVisible: false,
+    header: false,
   }
 });
 
-export default App;
+export default Stack = () =>
+  <View style={{flex: 1}}>
+    <StatusBar backgroundColor= "#212121" barStyle= "light-content"/>
+    <App/>
+  </View>;
 
 
 

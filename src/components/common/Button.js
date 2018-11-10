@@ -1,13 +1,29 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 const Button = (props) =>{
-    const { color , onPress, style, fontSize} = props;
+    const { color, gradient, onPress, style, fontSize, fontColor, start, end, icon} = props;
+    if(gradient){
+        return(
+            <TouchableOpacity onPress = { onPress }>
+                <LinearGradient colors= { gradient } start = {start} end = {end} style = { [styles.containerStyle, style]} >
+                    <View style = {styles.iconStyle}>
+                        {icon}
+                    </View>
+                    <Text style = { {fontSize: fontSize, fontWeight: '900', color : fontColor} }>{ props.children }</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+        );
+    }
     return (
         <TouchableOpacity onPress = {onPress}>
-            <View style= {[{backgroundColor : color}, styles.containerStyle, style]}>
-                <Text style = {{fontSize: fontSize, fontWeight: '900',}}>{props.children}</Text>
+           
+            <View style= { [{backgroundColor : color}, styles.containerStyle, style] }>
+                <View style = {styles.iconStyle}>
+                    {icon}
+                </View>
+                <Text style = { {fontSize: fontSize, fontWeight: '900', color : fontColor} }>{ props.children }</Text>
             </View>
         </TouchableOpacity>
     );
@@ -27,6 +43,9 @@ const styles= {
         shadowOffset: {width: 1, height: 2},
         shadowOpacity: 0.2,
         shadowRadius: 10,
+    },
+    iconStyle:{
+        paddingHorizontal: 5,
     }
 }
 

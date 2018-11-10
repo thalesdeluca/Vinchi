@@ -2,8 +2,8 @@ import React,{ Component } from 'react';
 import {  View, Image, Dimensions, Text, ScrollView } from 'react-native';
 import Card from '../components/Card';
 import TabBar from '../components/TabBar';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import reducers from '../reducers';
 import { BurgerButton, SearchBar } from '../components/common';
 
@@ -36,7 +36,7 @@ export default class MainScreen extends Component{
   render() {
     const { backgroundStyle, contentStyle, headerStyle, } = styles;
     return (
-      <Provider store ={ createStore(reducers) }>
+        <Provider store = { createStore(reducers) }>
         <View style = {backgroundStyle}>
           <View style = {contentStyle}>
             
@@ -69,11 +69,9 @@ export default class MainScreen extends Component{
           <View style= {{height: '10%', backgroundColor: 'rgba(0,0,0,0)'}}>
             
             <TabBar />
-          </View>
-          
-          
+          </View>    
         </View>
-      </Provider>
+        </Provider>
     );
   }
 }
