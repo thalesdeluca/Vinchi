@@ -1,4 +1,4 @@
-import { EMAIL_CHANGED, SELECT_TAB,PASSWORD_CHANGED } from './types';
+import { SELECT_TAB } from './types';
 
 export const selectTab = (tabId) => {
     return {
@@ -7,16 +7,3 @@ export const selectTab = (tabId) => {
     };
 };
 
-export const emailChanged = (text) =>{
-    return{
-        type: EMAIL_CHANGED,
-        payload: text
-    };
-};
-
-export const passwordChanged = (text) =>{
-    return {
-        type: PASSWORD_CHANGED,
-        payload: text
-    }
-};

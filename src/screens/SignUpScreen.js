@@ -23,7 +23,19 @@ class SignUpScreen extends Component{
 
   onPress_signUp(){
     this.setState({ loading: true });
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(() => console.log("Errou")).then(() => this.props.navigation.navigate('Login'));
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(() => console.log("Errou")).then(() =>{
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(() =>{
+        let user = firebase.auth().currentUser;
+        firebase.database().ref("users").child(user.uid).set({
+          name: this.state.fName,
+          lastName: this.state.lName,
+          email: this.state.email,
+          verified: firebase.auth().currentUser.emailVerified
+        });
+        
+      });
+    });
+
   }
   
   signUpButton(){
@@ -35,7 +47,7 @@ class SignUpScreen extends Component{
                   gradient= {['#ffd600','#ffb600','#ff9000']}  
                   fontSize = {16} 
                   onPress = {this.onPress_signUp.bind(this)} 
-                  start= {{x:0, y:0}} end= {{x:1, y:0}} 
+                  start= {{x:0, y:0}} end= {{x:1, y:1}} 
                   fontColor= '#fff' 
                   icon = {
                     <FontAwesome name = "check-circle" size= {16} color='#ffefa3'/>
@@ -84,7 +96,7 @@ class SignUpScreen extends Component{
           </View>
           
           <View style= {{width:'100%'}}>
-            <Button color = '#fff' fontSize = {16} start= {{x:0, y:0}} end= {{x:1, y:0}} gradient = {['#fff', '#eee','#aaa']} 
+            <Button color = '#fff' fontSize = {16} start= {{x:0, y:0}} end= {{x:1, y:1}} gradient = {['#fff', '#eee','#aaa']} 
             icon = {
               <FontAwesome name="upload" color='#212121' size={16}/>
             }>UPLOAD PHOTO</Button>

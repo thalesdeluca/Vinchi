@@ -32,7 +32,7 @@ class LoginForm extends Component{
             default:
                 return(
                     <View style = {styles.buttonStyle}>
-                        <Button gradient= {['#ffd600','#ffb600','#ff9000']} fontSize = {16} onPress = { this.onPress_login.bind(this) } fontColor = '#fff' start= {{x:0, y:0}} end= {{x:1, y:0}}> LOGIN </Button>
+                        <Button gradient= {['#ffd600','#ffb600','#ff9000']} fontSize = {16} onPress = { this.onPress_login.bind(this) } fontColor = '#fff' start= {{x:0, y:0}} end= {{x:1, y:1}}> LOGIN </Button>
                     </View>
                 );
         }
@@ -77,7 +77,7 @@ class LoginForm extends Component{
                     <Text style = {{color: 'rgba(133,133,133,0.7)', marginTop: 20, padding: 10}}>If you don't have an account yet just:</Text>
                     
                     <View style = {{width: '100%'}}>
-                        <Button gradient = {['#fff', '#eee','#aaa']} fontSize = {16} onPress = {this.onPress_signUp.bind(this)} fontColor= '#212121' start= {{x:0, y:0}} end= {{x:1, y:0}}> SIGN UP </Button>
+                        <Button gradient = {['#fff', '#eee','#aaa']} fontSize = {16} onPress = {this.onPress_signUp.bind(this)} fontColor= '#212121' start= {{x:0, y:0}} end= {{x:1, y:1}}> SIGN UP </Button>
                     </View>
 
                     <View style= {footerStyle}>

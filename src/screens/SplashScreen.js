@@ -45,7 +45,8 @@ const styles = {
     justifyContent: 'center',
   }, 
   logoStyle:{
+    alignSelf: 'center',
     width: '100%',
-    height: '15%',
+    height: '10%',
   }
 }

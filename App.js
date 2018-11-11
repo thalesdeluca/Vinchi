@@ -6,6 +6,10 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import LinearGradient from 'react-native-linear-gradient';
+import DrawerContent from './src/components/DrawerContent';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from './src/reducers';
 const Stack = createStackNavigator({
   Splash: {screen: SplashScreen},
   Login: {screen: LoginScreen},
@@ -30,6 +34,7 @@ const Drawer = createDrawerNavigator({
 }, {
   drawerPosition: 'left',
   drawerBackgroundColor: '#2a2a2a',
+  contentComponent : DrawerContent,
   contentOptions:{
     activeTintColor: '#FFF',
     activeBackgroundColor: '#212121',
@@ -39,10 +44,12 @@ const Drawer = createDrawerNavigator({
 
 
 export default App = () =>
-  <LinearGradient colors = {['#212121', '#111']} style={{flex: 1}}>
-    <StatusBar backgroundColor= "#212121" barStyle= "light-content"/>
-    <Drawer/>
-  </LinearGradient>;
+  <Provider store = { createStore(reducers) }>
+    <LinearGradient colors = {['#212121', '#111']} style={{flex: 1}}>
+      <StatusBar backgroundColor= "#212121" barStyle= "light-content"/>
+      <Drawer/>
+    </LinearGradient>
+  </Provider>;
 
 
 

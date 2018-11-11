@@ -2,15 +2,11 @@ import React,{ Component } from 'react';
 import {  View, Image, Dimensions, Text, ScrollView } from 'react-native';
 import Card from '../components/Card';
 import TabBar from '../components/TabBar';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducers from '../reducers';
 import { BurgerButton, SearchBar } from '../components/common';
 import LinearGradient from 'react-native-linear-gradient';
 export default class MainScreen extends Component{
   static navigationOptions = {
     title: 'Main',
-    drawerLockMode: 'unlocked'
   };
   constructor(props){
     super(props);
@@ -24,8 +20,7 @@ export default class MainScreen extends Component{
   render() {
     const { backgroundStyle, contentStyle, headerStyle, } = styles;
     return (
-        <Provider store = { createStore(reducers) }>
-        
+
         <LinearGradient colors = {['#212121', '#111']} style = {backgroundStyle}>
           <View style = {contentStyle}>
             <ScrollView>
@@ -59,7 +54,6 @@ export default class MainScreen extends Component{
             <TabBar />
           </View>    
         </LinearGradient>
-        </Provider>
     );
   }
 }
