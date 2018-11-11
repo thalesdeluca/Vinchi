@@ -6,10 +6,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from '../reducers';
 import { BurgerButton, SearchBar } from '../components/common';
-
+import LinearGradient from 'react-native-linear-gradient';
 export default class MainScreen extends Component{
   static navigationOptions = {
-    title: 'Main'
+    title: 'Main',
+    drawerLockMode: 'unlocked'
   };
   constructor(props){
     super(props);
@@ -17,19 +18,6 @@ export default class MainScreen extends Component{
       loaded: false,
     }
   }
-
-  /*
-  * GeosansLight-Oblique
-  * GeosansLight
-  * Open Sans Condensed Bold
-  * Open Sans Condensed Light
-  * Raleway Bold
-  * Raleway Light
-  * Raleway Medium
-  * Raleway Regular
-  * Raleway Thin
-  * Sunshine
-  * */
   createPost(){
 
   }
@@ -37,13 +25,13 @@ export default class MainScreen extends Component{
     const { backgroundStyle, contentStyle, headerStyle, } = styles;
     return (
         <Provider store = { createStore(reducers) }>
-        <View style = {backgroundStyle}>
+        
+        <LinearGradient colors = {['#212121', '#111']} style = {backgroundStyle}>
           <View style = {contentStyle}>
-            
             <ScrollView>
               <View style= {headerStyle}>
                 <View style = {{paddingRight: 20, paddingLeft: 10}}>
-                  <BurgerButton size= {25} color= "#fff"/>
+                  <BurgerButton size= {25} color= "#fff" onPress= { () => this.props.navigation.openDrawer() }/>
                 </View>
                 <SearchBar hint= "Search" fontSize= {14}/>
               </View>
@@ -70,7 +58,7 @@ export default class MainScreen extends Component{
             
             <TabBar />
           </View>    
-        </View>
+        </LinearGradient>
         </Provider>
     );
   }

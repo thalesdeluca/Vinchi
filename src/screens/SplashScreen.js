@@ -6,6 +6,8 @@ import firebase from 'firebase';
 import config from '../../api-key';
 import { StackActions, NavigationActions } from 'react-navigation';
 export default class SplashScreen extends Component{
+  static navigationOptions = {
+  }
   
   componentDidMount(){
     firebase.initializeApp(config);
@@ -44,6 +46,6 @@ const styles = {
   }, 
   logoStyle:{
     width: '100%',
-    height: '12%',
+    height: '15%',
   }
 }

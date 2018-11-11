@@ -4,7 +4,7 @@ import LoginForm from '../components/LoginForm';
 
 class LoginScreen extends Component{
   static navigationOptions = {
-    title:'Login'
+    title:'Login',
   };
   
   render(){

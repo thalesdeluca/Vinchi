@@ -18,7 +18,7 @@ class SignUpScreen extends Component{
 
   
   static navigationOptions = {
-    title: 'SignUp'
+    title: 'SignUp',
   }
 
   onPress_signUp(){
