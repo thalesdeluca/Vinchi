@@ -4,7 +4,9 @@ import { createStackNavigator } from 'react-navigation';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
+import SplashScreen from './src/screens/SplashScreen';
 const App = createStackNavigator({
+  Splash: {screen: SplashScreen},
   Login: {screen: LoginScreen},
   Main: {screen: MainScreen},
   SignUp: { screen: SignUpScreen},
