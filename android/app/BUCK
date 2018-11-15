@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.vinchi",
+    package = "com.delucathales.vinchi",
 )
 
 android_resource(
     name = "res",
-    package = "com.vinchi",
+    package = "com.delucathales.vinchi",
     res = "src/main/res",
 )
 

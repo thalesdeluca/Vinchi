@@ -96,9 +96,17 @@ def enableProguardInReleaseBuilds = false
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+    signingConfigs {
+        release {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
+    }
 
     defaultConfig {
-        applicationId "com.vinchi"
+        applicationId "com.delucathales.vinchi"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -118,6 +126,7 @@ android {
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
@@ -137,6 +146,9 @@ android {
 }
 
 dependencies {
+    compile project(':rn-fetch-blob')
+    compile project(':react-native-image-picker')
+    compile project(':react-native-fbsdk')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])

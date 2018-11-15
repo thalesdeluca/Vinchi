@@ -14,11 +14,15 @@
     "react": "16.6.0-alpha.8af6728",
     "react-devtools": "^3.4.2",
     "react-native": "0.57.4",
+    "react-native-fbsdk": "^0.8.0",
+    "react-native-image-picker": "^0.27.1",
     "react-native-linear-gradient": "^2.4.3",
+    "react-native-md5": "^1.0.0",
     "react-native-vector-icons": "^6.0.2",
     "react-navigation": "^2.18.2",
     "react-redux": "^5.1.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "rn-fetch-blob": "^0.10.13"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

@@ -8,9 +8,9 @@ import { StackActions, NavigationActions } from 'react-navigation';
 export default class SplashScreen extends Component{
   static navigationOptions = {
   }
-  
   componentDidMount(){
     firebase.initializeApp(config);
+    firebase.auth().useDeviceLanguage();
     firebase.auth().onAuthStateChanged(user => {
       if(user){
         this.props.navigation.dispatch(resetAction);
