@@ -1,4 +1,4 @@
-package com.delucathales.vinchi;
+package com.vinchi;
 
 import android.app.Application;
 
@@ -16,7 +16,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.CallbackManager;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new FBSDKPackage(mCallbackManager),
             new ImagePickerPackage(),
-            new RNFetchBlobPackage()
+            new RNFetchBlobPackage(),
+            new RNGoogleSigninPackage()
 
       );
     }

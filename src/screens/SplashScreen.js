@@ -3,21 +3,25 @@ import { Image, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Spinner } from '../components/common';
 import firebase from 'firebase';
-import config from '../../api-key';
+import { config, googleConfig } from '../../api-key';
 import { StackActions, NavigationActions } from 'react-navigation';
-export default class SplashScreen extends Component{
+import { connect } from 'react-redux';
+import reducers from '../reducers';
+import * as actions from '../actions';
+import { GoogleSignin } from 'react-native-google-signin';
+class SplashScreen extends Component{
   static navigationOptions = {
   }
   componentDidMount(){
     firebase.initializeApp(config);
+    this.setUpGoogleAuth();
     firebase.auth().useDeviceLanguage();
     firebase.auth().onAuthStateChanged(user => {
-      if(user){
-        this.props.navigation.dispatch(resetAction);
-      } else {
-        this.props.navigation.dispatch(resetActionLogin);
-      }
-    })
+      this.props.navigation.dispatch(user ? resetAction : resetActionLogin);
+    });
+  }
+  setUpGoogleAuth(){
+    GoogleSignin.configure();
   }
   render(){
     return(
@@ -37,16 +41,21 @@ const resetActionLogin = StackActions.reset({
   index : 0,
   actions : [ NavigationActions.navigate({ routeName: 'Login'})],
 });
+const mapStateToProps = state => {
+  return { display_profile: state.display_profile };
+}
 
 const styles = {
   containerStyle: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  }, 
+  },
   logoStyle:{
     alignSelf: 'center',
     width: '100%',
     height: '10%',
   }
 }
+
+export default connect(mapStateToProps, actions)(SplashScreen);

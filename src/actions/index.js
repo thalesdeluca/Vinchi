@@ -1,4 +1,4 @@
-import { SELECT_TAB, DISPLAY_NAME } from './types';
+import { SELECT_TAB, DISPLAY_PROFILE } from './types';
 
 export const selectTab = (tabId) => {
     return {
@@ -7,10 +7,10 @@ export const selectTab = (tabId) => {
     };
 };
 
-export const changeName = (name) => {
+export const changeProfile = (profile) => {
     return {
-        type: DISPLAY_NAME,
-        payload: name
+        type: DISPLAY_PROFILE,
+        payload: profile
     };
 }
 

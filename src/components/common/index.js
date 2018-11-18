@@ -8,3 +8,4 @@ export * from './Line';
 export * from './TouchableNative';
 export * from './SearchBar';
 export * from './Spinner';
+export * from './ProgressBar';

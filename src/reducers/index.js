@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import TabReducer from './TabReducer';
-import DisplayNameReducer from './DisplayNameReducer';
+import DisplayProfileReducer from './DisplayProfileReducer';
 export default combineReducers({
     tab: TabReducer,
-    display_name: DisplayNameReducer,
+    display_profile: DisplayProfileReducer,
 });

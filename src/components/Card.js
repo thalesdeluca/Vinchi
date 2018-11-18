@@ -13,23 +13,24 @@ export default class Card extends Component{
     }
     render() {
         const { titleStyle, containerStyle, dateStyle, descriptionStyle, nameStyle, imageStyle } = styles;
+        const { title, description, image, date } = props
         return(
             <View style= {containerStyle}>
                 <View>
                     <View style= {{ flexDirection: 'row', alignItems: 'center', paddingTop: 10, paddingHorizontal:15}}>
                         <FontAwesome name="user-circle" size={42} color="white" />
                         <View style= {{ justifyContent: 'center',alignItems: 'center', flex:1}}>
-                            <Text style = { dateStyle }>00/00/0000</Text>
+                            <Text style = { dateStyle }>{moment(new Date(date * 1000)).format('DD/MM/YYYY')}</Text>
                             <Text style = { nameStyle }>Supermercados Canção</Text>
-                            
+
                         </View>
-                        
+
                     </View>
                     <Rule/>
                     <View style = {{paddingHorizontal: 10}}>
-                        <Text style = { titleStyle }>Promoção 2 por 2 Corra já!</Text>
-                        
-                        <Text style = { descriptionStyle }>lorem ipsum dolor isi domet asdhoq qoudhsa qowuehsajdnasko qudhsaldnaa asudhasodna asdhljd aqouihdqk esoaunad oausd ankho.</Text>
+                        <Text style = { titleStyle }>title</Text>
+
+                        <Text style = { descriptionStyle }>description</Text>
                     </View>
                 </View>
                 <TouchableNative onPress= {() => this.doSomething()} useForeground= {true} >
@@ -41,7 +42,7 @@ export default class Card extends Component{
         );
     };
 
-    
+
 }
 const styles = {
     dateStyle:{

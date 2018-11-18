@@ -1,4 +1,4 @@
-package com.delucathales.vinchi;
+package com.vinchi;
 
 import com.facebook.react.ReactActivity;
 import android.content.Intent;

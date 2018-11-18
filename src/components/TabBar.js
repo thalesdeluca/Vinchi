@@ -67,6 +67,10 @@ class TabBar extends Component{
         }
         
     }
+    createPost(){
+        console.log(this.props);
+        this.props.navigation.navigate('Create');
+    }
     render(){
         const { containerStyle, buttonStyle, labelStyle,addStyle } = styles;
         return(
@@ -104,7 +108,7 @@ class TabBar extends Component{
                         </TouchableNative>
                     </View>
                 </View>
-                <TouchableHighlight onPress= {() => this.createPost()} style = {{position:'absolute', alignSelf: 'center', flex: 1, top: '-30%', borderRadius: 50}} underlayColor= 'rgba(0,0,0, 0.2)' >
+                <TouchableHighlight onPress= {this.createPost.bind(this)} style = {{position:'absolute', alignSelf: 'center', flex: 1, top: '-30%', borderRadius: 50}} underlayColor= 'rgba(0,0,0, 0.2)' >
                     <View style ={{backgroundColor:'#000', borderRadius: 50}}>
                     <AntDesign name='pluscircle' size = {50} color = '#ffd600' />
                     
