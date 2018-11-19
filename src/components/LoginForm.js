@@ -53,20 +53,34 @@ class LoginForm extends Component{
     }
 
     onPress_loginFB(access){
-        const credential = firebase.auth.FacebookAuthProvider.credential(access);
-        firebase.auth().signInAndRetrieveDataWithCredential(credential).then(() => {
-            console.log("teste");
+        const credential = firebase.auth.FacebookAuthProvider.credential(access.accessToken);
+        firebase.auth().signInAndRetrieveDataWithCredential(credential).then((stats) => {
+          if(stats.additionalUserInfo.isNewUser){
+            const user = stats.user;
+              firebase.database().ref("users").child(user.uid).set({
+                name: user.displayName,
+                lastName: '',
+                email: user.email,
+                profile_image: user.photoURL,
+                verified: true
+              }).catch(() => {
+                console.log("error on login");
+              });
+              firebase.auth().currentUser.updateProfile({
+                displayName: user.displayName,
+                email: user.email,
+                photoURL: user.photoURL
+              }).then(() => {
+                this.props.navigation.navigate('Main');
+              }).catch(() => {
+                console.log("error on login");
+              });
+          } else {
             this.props.navigation.navigate('Main');
+          }
         }).catch(() => {
-            Alert.alert(
-              'Error on login',
-              'Something has occurred and we could not sign you in',
-              [
-                {text: 'OK'}
-              ],
-              { cancelable: true }
-            )
-          });
+          console.log("error on login");
+        })
     }
 
 
@@ -80,7 +94,7 @@ class LoginForm extends Component{
                     <Text style = {headerStyle}>Vinchi</Text>
                     <Text style = {{color: 'rgba(133,133,133,0.7)'}} >Login with:</Text>
                     <View style = {altLoginStyle}>
-                        <FBLoginButton data = { this.onPress_loginFB.bind(this) }/>
+                        <FBLoginButton data = { this.onPress_loginFB.bind(this)}/>
                         <View style ={{paddingHorizontal: 30,}}/>
 
                         <TouchableHighlight>

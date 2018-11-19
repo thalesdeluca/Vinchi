@@ -104,15 +104,14 @@ class SignUpScreen extends Component{
 
   loginFB(result) {
     const credential = firebase.auth.FacebookAuthProvider.credential(result.accessToken);
-    firebase.auth().signInAndRetrieveDataWithCredential(credential).then(test =>{
-      let user = firebase.auth().currentUser;
+    firebase.auth().signInAndRetrieveDataWithCredential(credential).then((user) =>{
         firebase.database().ref("users").child(user.uid).set({
           name: user.displayName,
-          lastName: "",
+          lastName: '',
           email: user.email,
           profile_image: user.photoURL,
           verified: true
-        })
+        });
         firebase.auth().currentUser.updateProfile({
           displayName: user.displayName,
           email: user.email,

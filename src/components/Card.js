@@ -1,36 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import  FontAwesome  from 'react-native-vector-icons/FontAwesome';
 import ReactionBar from './ReactionBar';
 import { Rule, TouchableNative } from './common';
 
-export default class Card extends Component{
+export default class Card extends React.PureComponent{
     constructor(props){
         super(props);
     }
     doSomething(){
 
     }
+    renderProfileImage(){
+      if(this.props.uimage){
+        return <Image source = {{uri: this.props.uimage}} style = {{height: 42, width: 42, borderRadius:60}}/>;
+      } else {
+        return <FontAwesome name="user-circle" size={42} color="white" />;
+      }
+    }
     render() {
         const { titleStyle, containerStyle, dateStyle, descriptionStyle, nameStyle, imageStyle } = styles;
-        const { title, description, image, date } = props
         return(
+
             <View style= {containerStyle}>
                 <View>
                     <View style= {{ flexDirection: 'row', alignItems: 'center', paddingTop: 10, paddingHorizontal:15}}>
-                        <FontAwesome name="user-circle" size={42} color="white" />
+                        { this.renderProfileImage() }
                         <View style= {{ justifyContent: 'center',alignItems: 'center', flex:1}}>
-                            <Text style = { dateStyle }>{moment(new Date(date * 1000)).format('DD/MM/YYYY')}</Text>
-                            <Text style = { nameStyle }>Supermercados Canção</Text>
+                            <Text style = { dateStyle }>{this.props.date}</Text>
+                            <Text style = { nameStyle }>{this.props.username}</Text>
 
                         </View>
 
                     </View>
                     <Rule/>
                     <View style = {{paddingHorizontal: 10}}>
-                        <Text style = { titleStyle }>title</Text>
+                        <Text style = { titleStyle }>{this.props.title}</Text>
 
-                        <Text style = { descriptionStyle }>description</Text>
+                        <Text style = { descriptionStyle }>{this.props.description}</Text>
                     </View>
                 </View>
                 <TouchableNative onPress= {() => this.doSomething()} useForeground= {true} >

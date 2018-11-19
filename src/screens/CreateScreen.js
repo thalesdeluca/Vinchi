@@ -29,6 +29,9 @@ export default class CreateScreen extends Component{
       uploadImage(this.state.image, 'posts', user.uid).then((result) =>{
         firebase.database().ref('posts').child(user.uid).child(md5.hex_md5(Date.now() +" ")).set({
           title: this.state.title,
+          username : user.displayName,
+          uid : user.uid,
+          uimage: user.photoURL,
           description: this.state.description,
           image: result,
           date: Date.now()
@@ -107,6 +110,7 @@ export default class CreateScreen extends Component{
         <InputText
           hint= "Title"
           fontSize = {16}
+          maxLength = {70}
           style = {inputStyle}
           value = {this.state.title}
           onChangeText = {title => this.setState({ title })}
@@ -115,7 +119,8 @@ export default class CreateScreen extends Component{
           hint= "Description"
           fontSize = {16}
           multiline = {true}
-          maxLength = {256}
+          maxLength = {1000}
+          maxLines = {10}
           style = {[inputStyle,{maxLength:200, alignItems: 'flex-start', height:150,}]}
           value = {this.state.description}
           onChangeText = {description => this.setState({ description })}

@@ -15,7 +15,8 @@ const InputText = (props) => {
       icon,
       textColor = '#fff',
       multiline = false,
-      maxLength = 256} = props;
+      maxLength = 256,
+      maxLines = 4 } = props;
 
     const iconRender = {
       if(icon){
@@ -38,6 +39,7 @@ const InputText = (props) => {
                 placeholder= { hint }
                 multiline = { multiline }
                 maxLength = { maxLength }
+                maxLines = { maxLines }
                 underlineColorAndroid= 'transparent'
                 autoCorrect = { false }
                 placeholderTextColor= {placeHolderColor}/>
