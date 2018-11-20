@@ -35,7 +35,7 @@ class SignUpScreen extends Component{
     this.setState({ loading: true });
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(() => console.log("Errou")).then((result) =>{
       let user = result.user;
-      if(this.state.picture){
+      if(this.state.picture != null){
         uploadImage(this.state.picture, 'profiles', user.uid).then((result) => {
           firebase.database().ref("users").child(user.uid).set({
             name: user.displayName,
@@ -55,6 +55,23 @@ class SignUpScreen extends Component{
             this.props.navigation.dispatch(resetActionMain);
           });;
         });
+      } else {
+        firebase.database().ref("users").child(user.uid).set({
+          name: user.displayName,
+          lastName: "",
+          email: user.email,
+          profile_image: "",
+          verified: true
+        })
+        firebase.auth().currentUser.updateProfile({
+          displayName: this.state.fName,
+          email: this.state.email,
+        }).catch(() =>{
+          console.log("error");
+          this.setState({ loading: false });
+        }).then(() => {
+          this.props.navigation.dispatch(resetActionMain);
+        });;
       }
 
 
@@ -139,8 +156,6 @@ class SignUpScreen extends Component{
       return <FontAwesome name="user-circle" size={64} color="white" />;
     }
   }
-
-
 
   passwordBar(){
     let value = this.state.password.length * 10;

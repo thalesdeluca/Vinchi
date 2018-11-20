@@ -26,14 +26,39 @@ export default class CreateScreen extends Component{
       firebase.auth().onAuthStateChanged(() =>{
         console.log("just don't ask me why...")
       });
-      uploadImage(this.state.image, 'posts', user.uid).then((result) =>{
+      if(this.state.image){
+        uploadImage(this.state.image, 'posts', user.uid).then((result) =>{
+          firebase.database().ref('posts').child(user.uid).child(md5.hex_md5(Date.now() +" ")).set({
+            title: this.state.title,
+            username : user.displayName,
+            uid : user.uid,
+            uimage: user.photoURL,
+            description: this.state.description,
+            image: result,
+            date: Date.now()
+          }).then(() => {
+            Alert.alert(
+              'Post Created',
+              'Post created succesfully',
+              [
+                {text: 'OK'}
+              ],
+              { cancelable: true }
+            );
+            this.setState({loading: false});
+            this.props.navigation.dispatch(resetAction);
+          }).catch((error) => {
+            console.log("Error " + error);
+          });
+        });
+      } else {
         firebase.database().ref('posts').child(user.uid).child(md5.hex_md5(Date.now() +" ")).set({
           title: this.state.title,
           username : user.displayName,
           uid : user.uid,
           uimage: user.photoURL,
           description: this.state.description,
-          image: result,
+          image: "",
           date: Date.now()
         }).then(() => {
           Alert.alert(
@@ -49,28 +74,7 @@ export default class CreateScreen extends Component{
         }).catch((error) => {
           console.log("Error " + error);
         });
-      }).catch(() => {
-        Alert.alert(
-          'Error on creating post',
-          'Could not upload image',
-          [
-            {text: 'OK'}
-          ],
-          { cancelable: true }
-        );
-        this.setState({loading: false});
-      });
-
-    } else {
-      this.setState({loading: false});
-      Alert.alert(
-        'Error on creating post',
-        'In order to create a post, you need to specify a title and description',
-        [
-          {text: 'OK'}
-        ],
-        { cancelable: true }
-      );
+      }
     }
   }
   imageRender(){

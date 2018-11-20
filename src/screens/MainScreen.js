@@ -6,6 +6,7 @@ import { BurgerButton, SearchBar, Spinner, Button } from '../components/common';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from 'firebase';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Lightbox from 'react-native-lightbox';
 import _ from 'lodash';
 export default class MainScreen extends Component{
   static navigationOptions = {
@@ -25,7 +26,7 @@ export default class MainScreen extends Component{
   getData = async () => {
     this.setState({loading: true});
     const user = firebase.auth().currentUser.uid;
-    firebase.database().ref('/posts/').once('value', snapshot => {
+    firebase.database().ref('/posts/').orderByChild('date').once('value', snapshot => {
       const data = _.map(snapshot.val(), array => {
         return array;
       });
@@ -58,7 +59,21 @@ export default class MainScreen extends Component{
   refreshList() {
     this.getData();
   }
-
+  renderImage(item){
+    if(item.post.image != ""){
+        return (
+          <Lightbox style = {{height: Dimensions.get('screen').height/3, width: '100%', backgroundColor : '#121212'}}
+            activeProps = {{resizeMode: 'contain', flex: 1}}>
+            <Image
+              source ={{uri: item.post.image}}
+              style = {{height: Dimensions.get('screen').height/3, width: '100%', backgroundColor : '#121212'}}
+              resizeMode= 'cover'/>
+          </Lightbox>
+        );
+    } else {
+      return;
+    }
+  }
   renderList(){
     if(this.state.data){
       if(this.state.data.length > 0){
@@ -71,6 +86,7 @@ export default class MainScreen extends Component{
             renderItem = {({item, length}) => {
               const datePost = new Date(item.post.date);
               const dateString = datePost.getDate() + "/" + (datePost.getMonth() + 1) + "/" + datePost.getFullYear();
+
               return(
                 <Card
                   title = {item.post.title}
@@ -78,10 +94,7 @@ export default class MainScreen extends Component{
                   date = {dateString}
                   username = {item.post.username}
                   uimage = {item.post.uimage}>
-                  <Image
-                    source ={{uri: item.post.image}}
-                    style = {{height: Dimensions.get('screen').height/3, width: '100%', backgroundColor : '#121212'}}
-                    resizeMode= 'cover'/>
+                  { this.renderImage(item) }
                 </Card>
               );
 
@@ -116,7 +129,6 @@ export default class MainScreen extends Component{
 
   render() {
     const { backgroundStyle, contentStyle, headerStyle, } = styles;
-    console.log(this.state.data);
     return (
         <LinearGradient colors = {['#212121', '#111']} style = {backgroundStyle}>
           <View style = {contentStyle}>
