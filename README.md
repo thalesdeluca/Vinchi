@@ -54,8 +54,10 @@ export const googleConfig = {
    //webClient, offlineAccess...
 }
 ```
+
 <br/>
-Now you'll have to create and ``strings.xml`` file on path ``~/Vinchi/android/app/src/res/values/`` with the following:
+Now you'll have to create and ``strings.xml`` file on path ``~/Vinchi/android/app/src/res/values/`` with the following:]
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
