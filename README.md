@@ -42,7 +42,10 @@ $ npm i
 ```
 
 <br/>
-After this, you'll have to create a file on the project's root ``~/Vinchi/`` named ``api-key.js`` which it'll have to contain both firebase and google config:
+<br/>
+
+After this, you'll have to create a file on the project's root `` ~/Vinchi/ `` named `` api-key.js `` which it'll have to contain both firebase and google config:
+
 ```
 export const config = {
    //Here goes your firebase config
@@ -54,9 +57,10 @@ export const googleConfig = {
    //webClient, offlineAccess...
 }
 ```
-
 <br/>
-Now you'll have to create and ``strings.xml`` file on path ``~/Vinchi/android/app/src/res/values/`` with the following:]
+<br/>
+
+Now you'll have to create and ``strings.xml`` file on path ``~/Vinchi/android/app/src/res/values/`` with the following:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -67,10 +71,14 @@ Now you'll have to create and ``strings.xml`` file on path ``~/Vinchi/android/ap
 ```
 
 <br/>
+<br/>
+
 On ``~/Vinchi/android/app/`` you'll have to place your ``google-services.json`` ( the one you get at firebase android setup).
 
 <br/>
+
 On project's root ``~/Vinchi/`` place your ``credentials.json`` that you get at google auth developers.
+
 <br/>
 
 And voilá, you're set!
