@@ -26,11 +26,20 @@ An app made in order to learn React Native.
       </td>
    </tr>
 </table>
-#
+
 
 ## Documentation
 
-## Dependencies
+
+
+## Latest Releases
+Android: [v1.0 Download](https://raw.githubusercontent.com/thalesdeluca/Vinchi/master/releases/vinchi.apk)
+iOS: Not built yet
+
+Other releases can be found at ``/releases/`` folder.
+
+## About
+This project was originally created for a university work, more specifically, a Software Requirements work. The idea was to create an app that focus on self-promoting microbusiness, restaurants and local markets, being a option for those who publish their products on facebook groups etc...
 
 ## Installation
 First of all, you need to clone the repository and run ``npm i`` to install dependencies.
